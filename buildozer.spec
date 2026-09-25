@@ -13,9 +13,9 @@ requirements = python3,kivy
 orientation = portrait
 fullscreen = 1
 
-android.api = 33
-android.ndk = 25b
-android.archs = arm64-v8a, armeabi-v7a
+android.api = 31
+android.ndk = 25c
+android.archs = arm64-v8a
 android.allow_backup = True
 
 android.add_src = bg.jpg
