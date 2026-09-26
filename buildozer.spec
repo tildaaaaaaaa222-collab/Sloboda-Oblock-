@@ -14,8 +14,6 @@ requirements = python3,kivy==2.3.0
 orientation = portrait
 fullscreen = 1
 
-icon.filename = %(source.dir)s/icon.png
-
 android.accept_sdk_license = True
 android.skip_update = False
 
@@ -23,7 +21,7 @@ android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.ndk_api = 24
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
 android.allow_backup = True
 android.permissions = INTERNET
 
