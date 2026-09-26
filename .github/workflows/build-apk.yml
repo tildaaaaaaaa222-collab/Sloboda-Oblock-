@@ -25,7 +25,8 @@ jobs:
           git zip unzip openjdk-17-jdk \
           python3-pip python3-setuptools \
           autoconf libtool pkg-config zlib1g-dev \
-          libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+          libncurses-dev cmake libffi-dev libssl-dev \
+          libltdl-dev
 
     - name: Install Buildozer and Cython
       run: |
