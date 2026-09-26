@@ -1,7 +1,6 @@
 [app]
-
 title = Sloboda Oblock
-package.name = slobodaoblock
+package.name = slobodaoblok
 package.domain = org.test
 
 source.dir = .
@@ -10,7 +9,8 @@ source.exclude_dirs = .github, bin, .buildozer
 
 version = 0.1
 
-requirements = python3,kivy==2.3.0
+# ИЗМЕНЕНИЕ: убрал старую версию kivy, добавил явные версии pyjnius и cython
+requirements = python3,kivy==2.3.1,pyjnius==1.7.0,cython==0.29.36
 orientation = portrait
 fullscreen = 1
 
