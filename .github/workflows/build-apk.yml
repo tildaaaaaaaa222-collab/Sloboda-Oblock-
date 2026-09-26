@@ -39,13 +39,36 @@ jobs:
         yes | sdkmanager --licenses || true
 
     - name: Build with Buildozer
+      id: buildozer
       run: |
-        yes | buildozer android debug 2>&1 | tail -n 100
+        buildozer android debug 2>&1 | tee build.log
+        exit ${PIPESTATUS[0]}
+
+    - name: Show last lines of build log
+      if: always()
+      run: |
+        echo "=== LAST 100 LINES OF build.log ==="
+        tail -n 100 build.log
+
+    - name: Show all errors from build log
+      if: always()
+      run: |
+        echo "=== ALL ERROR LINES ==="
+        grep -i -E "error|failed|traceback|exception" build.log | tail -n 50 || echo "no errors found"
 
     - name: Upload APK
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: kivy-apk
-        path: bin/*.apk
+        path: |
+          bin/*.apk
+          **/*.apk
         if-no-files-found: warn
+
+    - name: Upload build log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-log
+        path: build.log
