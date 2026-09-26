@@ -16,26 +16,33 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
     - name: Install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-          git zip unzip openjdk-17-jdk \
-          python3-pip python3-setuptools \
+          git zip unzip \
+          python3-pip python3-setuptools python3-wheel \
           autoconf libtool pkg-config zlib1g-dev \
           libncurses-dev cmake libffi-dev libssl-dev \
           libltdl-dev
 
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
     - name: Install Buildozer and Cython
       run: |
-        pip install --upgrade pip
+        pip install --upgrade pip setuptools wheel
         pip install buildozer cython==0.29.36
 
     - name: Build with Buildozer
       run: |
-        export PYTHON_VERSION=3.10
+        export PYTHON_VERSION=3.11
+        export P4A_PYTHON_VERSION=3.11
         buildozer -v android debug
 
     - name: Upload APK
