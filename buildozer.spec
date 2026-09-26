@@ -1,21 +1,31 @@
 [app]
-title = Sloboda Oblok
+
+title = Sloboda Oblock
 package.name = slobodaoblock
 package.domain = org.test
+
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,json,mp3,ogg,wav
+source.exclude_dirs = .github, bin, .buildozer
+
+version = 0.1
+
+requirements = python3,kivy==2.3.0
+orientation = portrait
+fullscreen = 1
+
+icon.filename = %(source.dir)s/icon.png
 
 android.accept_sdk_license = True
 android.skip_update = False
 
-version = 0.1
-requirements = python3,kivy
-orientation = portrait
-fullscreen = 1
-
-android.api = 31
-android.ndk = 25c
-android.archs = arm64-v8a
+android.api = 33
+android.minapi = 21
+android.ndk = 25b
+android.ndk_api = 24
+android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
+android.permissions = INTERNET
 
-android.add_src = bg.jpg
+android.logcat_pid = False
+android.debug = True
